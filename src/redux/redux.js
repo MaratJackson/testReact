@@ -1,10 +1,10 @@
 import {createStore, combineReducers} from 'redux';
 import postsDataReducer from './postsDataReducer';
 
-let reduces = combineReducers({
+const reduces = combineReducers({
     postsDataReducer
 });
 
-let store = createStore(reduces);
+const store = createStore(reduces);
 
 export default store;

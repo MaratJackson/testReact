@@ -1,6 +1,6 @@
 const ADD_POSTS = 'ADD_POSTS';
 
-let init = {
+const init = {
    posts:[]
 }
 

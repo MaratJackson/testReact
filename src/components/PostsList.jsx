@@ -13,11 +13,11 @@ class PostsList extends React.Component {
           ])
           .then(axios.spread((postsResponse, commentsResponse, usersResponse) => {
 
-            let newArrPosts = postsResponse.data.map(function(elem){
+            const newArrPosts = postsResponse.data.map(function(elem){
 
-              let getComments = commentsResponse.data.filter(item => item.postId === elem.id);
+              const getComments = commentsResponse.data.filter(item => item.postId === elem.id);
 
-              let getUserInfo = usersResponse.data.find(item => item.id === elem.userId);
+              const getUserInfo = usersResponse.data.find(item => item.id === elem.userId);
 
               return {
                 'userName':getUserInfo.name,
