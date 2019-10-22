@@ -1,3 +1,4 @@
+Stack : nodeJs, React, Redux, npm
 
 1 npm install
 
