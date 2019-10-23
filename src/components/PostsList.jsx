@@ -20,10 +20,10 @@ class PostsList extends React.Component {
               const getUserInfo = usersResponse.data.find(item => item.id === elem.userId);
 
               return {
-                'userName':getUserInfo.name,
-                'title':elem.title,
-                'text':elem.body,
-                'comments':getComments
+                userName:getUserInfo.name,
+                title:elem.title,
+                text:elem.body,
+                comments:getComments
               }
             })
             this.props.dispatch(addPosts(newArrPosts))
@@ -32,7 +32,7 @@ class PostsList extends React.Component {
 
     render() {
         let listPosts
-        if (this.props.state.length > 0) {
+        if (this.props.state.length) {
           listPosts = this.props.state.map(function(elem){
             return <div>
                       <li><h2>{elem.title}</h2></li>
@@ -52,8 +52,6 @@ class PostsList extends React.Component {
                     </div>
                      
           })
-        } else {
-          listPosts = ''
         }
         return (
          <div><ul>{listPosts}</ul></div>
