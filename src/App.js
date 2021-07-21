@@ -1,15 +1,11 @@
 import React from 'react';
-import PostsList from './components/PostsList';
+import CommentsList from './components/CommentsList';
 
-
-function App(props) {
-
+function App() {
+  
   return (
     <div className="App">
-       <PostsList 
-         state={props.state.postsDataReducer.posts} 
-         dispatch={props.dispatch}
-         />
+       <CommentsList />
     </div>
   );
 }
