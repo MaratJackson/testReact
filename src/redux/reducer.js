@@ -7,7 +7,7 @@ const initState = {
 export const reducer = (state = initState, action) => {
   switch (action.type) {
     case actionTypes.ADD_COMMENTS:
-      return {...state, commentsList: [...action.data]}
+      return {...state, commentsList: [...state.commentsList,...action.data]}
     default:
       return state
   }

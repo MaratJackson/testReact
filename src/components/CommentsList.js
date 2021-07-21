@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { CommentItem } from './CommentItem'
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments } from '../redux/actions';
@@ -14,31 +14,41 @@ const styles = {
     color: '#FFFFFF',
     padding: '15px 32px',
     transitionDuration: '0.4s',
-    margin: '16px 0 !important',
     fonSize: '16px',
     cursor: 'pointer',
     margin: '15px'
+  },
+  hideBtn: {
+    display:'none'
   }
 }
 
 const CommentsList = () => {
 
   const dispatch = useDispatch()
-  const [ limit, getMoreComments ] = useState(5);
+  const [ offset, getMoreComments ] = useState(0);
+  const messagesEndRef = useRef(null)
   const commentsList = useSelector(state => state.comments.commentsList)
 
+
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({block: "end", behavior: "smooth"});
+  }
+
   useEffect(() => {
-    dispatch(getComments(limit))
-  },[limit])
+    dispatch(getComments(offset))
+    setTimeout(
+     () => scrollToBottom(), 500)
+  },[offset])
    
   return(
-    <div style={styles.container}>
-     {commentsList && commentsList.length > 0 && 
+    <div style={styles.container} ref={messagesEndRef}>
+     {commentsList.length > 0 && 
          commentsList.map((comment) => <CommentItem key={comment.id} {...comment} />)
      }
-     <button 
-       style={styles.btn} 
-       onClick={() => getMoreComments(limit + 5)}
+     <button   
+       style={commentsList.length ? styles.btn : styles.hideBtn} 
+       onClick={() => getMoreComments(offset + 5)}
       >
          LOAD MORE
     </button>

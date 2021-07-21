@@ -1,9 +1,9 @@
 import * as types from './constants';
 import axios from 'axios';
 
-export const getComments = (limit) => {
+export const getComments = (offset) => {
     return function (dispatch) {
-      axios.get(`https://jsonplaceholder.typicode.com/comments?_start=${limit-5}&_limit=${limit}`)
+      axios.get(`https://jsonplaceholder.typicode.com/comments?_start=${offset}&_limit=${5}`)
       .then( result => { 
         dispatch(addPosts(result.data))
       })
