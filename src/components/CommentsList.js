@@ -27,12 +27,12 @@ const CommentsList = () => {
 
   const dispatch = useDispatch()
   const [ offset, getMoreComments ] = useState(0);
-  const messagesEndRef = useRef(null)
+  const commentsEndRef = useRef(null)
   const commentsList = useSelector(state => state.comments.commentsList)
 
 
   const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({block: "end", behavior: "smooth"});
+    commentsEndRef.current.scrollIntoView({block: "end", behavior: "smooth"});
   }
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const CommentsList = () => {
   },[offset])
    
   return(
-    <div style={styles.container} ref={messagesEndRef}>
+    <div style={styles.container} ref={commentsEndRef}>
      {commentsList.length > 0 && 
          commentsList.map((comment) => <CommentItem key={comment.id} {...comment} />)
      }

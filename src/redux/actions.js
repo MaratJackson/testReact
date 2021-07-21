@@ -5,7 +5,7 @@ export const getComments = (offset) => {
     return function (dispatch) {
       axios.get(`https://jsonplaceholder.typicode.com/comments?_start=${offset}&_limit=${5}`)
       .then( result => { 
-        dispatch(addPosts(result.data))
+        dispatch(addComments(result.data))
       })
       .catch( error => {
          console.log(error.message)
@@ -13,7 +13,7 @@ export const getComments = (offset) => {
     }
  }
 
-export const addPosts = (data) => {
+export const addComments = (data) => {
   return {
     type: types.ADD_COMMENTS,
     data:data
