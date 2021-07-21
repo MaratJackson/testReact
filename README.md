@@ -2,6 +2,4 @@ Stack : nodeJs, React, Redux, npm
 
 1 npm install
 
-2 npm start
-
-3 http://localhost:3000
+2 npm run start
